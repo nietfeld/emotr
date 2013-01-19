@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface ELKQuestion : NSObject
-- (ELKQuestion *)getQuestion;
 
-@property (nonatomic, copy) NSString *questionText; 
-@property (nonatomic, copy) UIImage *leftPhoto;
-@property (nonatomic, copy) UIImage *rightPhoto;
+
+@property (nonatomic, strong) NSString *questionText;
+@property (nonatomic, strong) NSString *leftPhoto;
+@property (nonatomic, strong) NSString *rightPhoto;
 @property (nonatomic) BOOL answer;
 @end

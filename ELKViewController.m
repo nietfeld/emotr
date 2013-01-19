@@ -14,13 +14,14 @@
 @end
 
 @implementation ELKViewController
-@synthesize question;
-@synthesize score;
+@synthesize currentQuestion, questionStore, score;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setScore:(0)];
+    self.questionStore = [[ELKQuestionStore alloc] init];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -40,6 +41,7 @@
 - (void)alertView:(UIAlertView *)alertV didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     // call the showQuestion for a new question and update the score
+    self.currentQuestion = [self.questionStore getQuestion];
     [self showQuestion:self];
     [self incrementScore:self];
     
@@ -47,17 +49,11 @@
 
 - (IBAction)showQuestion:(id)sender
 {
-    /*UIImage *nextPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"babydeer_08" ofType:@"jpeg"]];
-    [[self leftPhoto] setImage:nextPhoto forState:UIControlStateNormal];
-    [[self rightPhoto] setImage:nextPhoto forState:UIControlStateNormal];
-    [self setQuestion:@"Which elklet is happier?"];
-    [[self questionLabel] setText:[self question]];*/
     
-    UIImage *nextPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"babydeer_08" ofType:@"jpeg"]];
+    UIImage *nextPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto ofType:@"jpeg"]];
     [[self leftPhoto] setImage:nextPhoto forState:UIControlStateNormal];
     [[self rightPhoto] setImage:nextPhoto forState:UIControlStateNormal];
-    [self setQuestion:@"Which elklet is happier?"];
-    [[self questionLabel] setText:[self question]];
+    [[self questionLabel] setText:self.currentQuestion.questionText];
 }
 
 - (IBAction)incrementScore:(id)sender

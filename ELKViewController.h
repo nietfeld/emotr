@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ELKQuestionStore.h"
 
 @interface ELKViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *rightPhoto;
@@ -19,6 +20,7 @@
 - (IBAction)incrementScore:(id)sender;
 
 // should this be weak? 
-@property (copy, nonatomic) NSString *question;
+@property (copy, nonatomic) ELKQuestion *currentQuestion;
 @property (nonatomic) int score;
+@property (nonatomic, strong) ELKQuestionStore *questionStore;
 @end
