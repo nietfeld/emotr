@@ -115,7 +115,6 @@
 						<string key="NSFrame">{{50, 259}, {227, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -239,30 +238,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">leftButton:</string>
-						<reference key="source" ref="771271582"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">207</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">makePopUp:</string>
 						<reference key="source" ref="771271582"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">211</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">rightButton:</string>
-						<reference key="source" ref="4924573"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">208</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -442,9 +423,9 @@
 								<int key="contentType">3</int>
 							</object>
 							<reference ref="4924573"/>
-							<reference ref="771271582"/>
 							<reference ref="187144536"/>
 							<reference ref="361671114"/>
+							<reference ref="771271582"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

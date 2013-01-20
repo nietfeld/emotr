@@ -19,6 +19,9 @@
 		E799517116AADD6C001A2B5F /* ELKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E799517016AADD6C001A2B5F /* ELKViewController.m */; };
 		E799517416AADD6C001A2B5F /* ELKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E799517216AADD6C001A2B5F /* ELKViewController.xib */; };
 		E7A344DC16AB3F0700E0DF49 /* ELKQuestionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */; };
+		E7A344DE16AB648600E0DF49 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A344DD16AB648600E0DF49 /* libsqlite3.0.dylib */; };
+		E7A344E016AB678800E0DF49 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E7A344DF16AB678800E0DF49 /* db.sqlite */; };
+		E7A344E416AB709400E0DF49 /* emotr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E7A344E316AB709400E0DF49 /* emotr.sqlite */; };
 		E7EDDBEE16AB1D2B00A5B943 /* babydeer_08.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E7EDDBED16AB1D2B00A5B943 /* babydeer_08.jpeg */; };
 		E7EDDBF116AB1D3000A5B943 /* HappyElk_0691c.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E7EDDBF016AB1D3000A5B943 /* HappyElk_0691c.jpeg */; };
 		E7EDDBFB16AB2EAA00A5B943 /* ELKQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EDDBFA16AB2EAA00A5B943 /* ELKQuestion.m */; };
@@ -45,6 +48,9 @@
 		E799517316AADD6C001A2B5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ELKViewController.xib; sourceTree = "<group>"; };
 		E7A344DA16AB3F0700E0DF49 /* ELKQuestionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELKQuestionStore.h; path = ../ELKQuestionStore.h; sourceTree = "<group>"; };
 		E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELKQuestionStore.m; path = ../ELKQuestionStore.m; sourceTree = "<group>"; };
+		E7A344DD16AB648600E0DF49 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		E7A344DF16AB678800E0DF49 /* db.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = db.sqlite; path = ../../../../Desktop/db.sqlite; sourceTree = "<group>"; };
+		E7A344E316AB709400E0DF49 /* emotr.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = emotr.sqlite; sourceTree = "<group>"; };
 		E7EDDBED16AB1D2B00A5B943 /* babydeer_08.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = babydeer_08.jpeg; sourceTree = "<group>"; };
 		E7EDDBF016AB1D3000A5B943 /* HappyElk_0691c.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HappyElk_0691c.jpeg; sourceTree = "<group>"; };
 		E7EDDBF916AB2EAA00A5B943 /* ELKQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELKQuestion.h; sourceTree = "<group>"; };
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A344DE16AB648600E0DF49 /* libsqlite3.0.dylib in Frameworks */,
 				E799515816AADD6C001A2B5F /* UIKit.framework in Frameworks */,
 				E799515A16AADD6C001A2B5F /* Foundation.framework in Frameworks */,
 				E799515C16AADD6C001A2B5F /* CoreGraphics.framework in Frameworks */,
@@ -70,6 +77,7 @@
 		E799514816AADD6C001A2B5F = {
 			isa = PBXGroup;
 			children = (
+				E7A344DD16AB648600E0DF49 /* libsqlite3.0.dylib */,
 				E799515D16AADD6C001A2B5F /* emotr */,
 				E799515616AADD6C001A2B5F /* Frameworks */,
 				E799515416AADD6C001A2B5F /* Products */,
@@ -99,12 +107,14 @@
 			children = (
 				E799516616AADD6C001A2B5F /* ELKAppDelegate.h */,
 				E799516716AADD6C001A2B5F /* ELKAppDelegate.m */,
+				E7A344E316AB709400E0DF49 /* emotr.sqlite */,
 				E799516F16AADD6C001A2B5F /* ELKViewController.h */,
 				E799517016AADD6C001A2B5F /* ELKViewController.m */,
+				E799517216AADD6C001A2B5F /* ELKViewController.xib */,
 				E7A344DA16AB3F0700E0DF49 /* ELKQuestionStore.h */,
 				E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */,
-				E799517216AADD6C001A2B5F /* ELKViewController.xib */,
 				E7EDDBF916AB2EAA00A5B943 /* ELKQuestion.h */,
+				E7A344DF16AB678800E0DF49 /* db.sqlite */,
 				E7EDDBFA16AB2EAA00A5B943 /* ELKQuestion.m */,
 				E799515E16AADD6C001A2B5F /* Supporting Files */,
 			);
@@ -190,6 +200,8 @@
 				E7EDDBF116AB1D3000A5B943 /* HappyElk_0691c.jpeg in Resources */,
 				E7EDDBFE16AB306800A5B943 /* deer1.jpeg in Resources */,
 				E7EDDBFF16AB306800A5B943 /* deer2.jpeg in Resources */,
+				E7A344E016AB678800E0DF49 /* db.sqlite in Resources */,
+				E7A344E416AB709400E0DF49 /* emotr.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +266,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
