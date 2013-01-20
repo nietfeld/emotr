@@ -31,17 +31,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (IBAction)makePopUp:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BOOYAH!"
-                                                    message:@"Saved" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    NSLog(@"yeah");
+    /*NSString *alertMessage;
+    NSLog(@"%@", alertMessage);
+    if (p == 0){
+        alertMessage = @"Wrong Response!";
+    }else {
+        alertMessage = @"Right Answer!!";
+    }*/
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"May or may not be right"
+                                                    message:@"Saved"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
     [alert show];
 }
-
+ 
 - (void)alertView:(UIAlertView *)alertV didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    // call the showQuestion for a new question and update the score
-    self.currentQuestion = [self.questionStore getQuestion];
+    self.currentQuestion = [self.questionStore getQuestion]; 
     [self showQuestion:self];
     [self incrementScore:self];
     

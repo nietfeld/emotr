@@ -43,8 +43,8 @@
 		E799516F16AADD6C001A2B5F /* ELKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELKViewController.h; sourceTree = "<group>"; };
 		E799517016AADD6C001A2B5F /* ELKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELKViewController.m; sourceTree = "<group>"; };
 		E799517316AADD6C001A2B5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ELKViewController.xib; sourceTree = "<group>"; };
-		E7A344DA16AB3F0700E0DF49 /* ELKQuestionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELKQuestionStore.h; sourceTree = "<group>"; };
-		E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELKQuestionStore.m; sourceTree = "<group>"; };
+		E7A344DA16AB3F0700E0DF49 /* ELKQuestionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELKQuestionStore.h; path = ../ELKQuestionStore.h; sourceTree = "<group>"; };
+		E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELKQuestionStore.m; path = ../ELKQuestionStore.m; sourceTree = "<group>"; };
 		E7EDDBED16AB1D2B00A5B943 /* babydeer_08.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = babydeer_08.jpeg; sourceTree = "<group>"; };
 		E7EDDBF016AB1D3000A5B943 /* HappyElk_0691c.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HappyElk_0691c.jpeg; sourceTree = "<group>"; };
 		E7EDDBF916AB2EAA00A5B943 /* ELKQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELKQuestion.h; sourceTree = "<group>"; };
@@ -70,8 +70,6 @@
 		E799514816AADD6C001A2B5F = {
 			isa = PBXGroup;
 			children = (
-				E7A344DA16AB3F0700E0DF49 /* ELKQuestionStore.h */,
-				E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */,
 				E799515D16AADD6C001A2B5F /* emotr */,
 				E799515616AADD6C001A2B5F /* Frameworks */,
 				E799515416AADD6C001A2B5F /* Products */,
@@ -103,6 +101,8 @@
 				E799516716AADD6C001A2B5F /* ELKAppDelegate.m */,
 				E799516F16AADD6C001A2B5F /* ELKViewController.h */,
 				E799517016AADD6C001A2B5F /* ELKViewController.m */,
+				E7A344DA16AB3F0700E0DF49 /* ELKQuestionStore.h */,
+				E7A344DB16AB3F0700E0DF49 /* ELKQuestionStore.m */,
 				E799517216AADD6C001A2B5F /* ELKViewController.xib */,
 				E7EDDBF916AB2EAA00A5B943 /* ELKQuestion.h */,
 				E7EDDBFA16AB2EAA00A5B943 /* ELKQuestion.m */,
@@ -254,6 +254,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
