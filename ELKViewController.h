@@ -1,5 +1,5 @@
 //
-//  ELKViewController.h
+//  ELKViewController.h/Users/margaretnietfeld/Dropbox/iOS apps/emotr/emotr/ELKViewController.m
 //  emotr
 //
 //  Created by Margaret Nietfeld on 1/19/13.
@@ -10,10 +10,14 @@
 #import "ELKQuestionStore.h"
 
 @interface ELKViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *rightPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *leftPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *leftPhotoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *rightPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *rightPhotoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+
+
 
 //- (IBAction)choseLeftImage:(id)sender;
 //- (IBAction)choseRightImage:(id)sender;

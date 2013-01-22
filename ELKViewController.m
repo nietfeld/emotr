@@ -19,9 +19,15 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
     [self setScore:(0)];
     self.questionStore = [[ELKQuestionStore alloc] init];
+    
+    // Initializes with a new photo, stolen from dismissing the pop up. Factor this out? 
+    self.currentQuestion = [self.questionStore getQuestion];
+    [self showQuestion:self];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -34,18 +40,21 @@
 
 - (IBAction)makePopUp:(id)sender
 {
-    NSLog(@"yeah");
-    /*NSString *alertMessage;
-    NSLog(@"%@", alertMessage);
-    if (p == 0){
-        alertMessage = @"Wrong Response!";
+    NSString *alertTitle;
+    NSString *alertMessage;
+    if([sender tag] == [[self currentQuestion] answer]){
+        alertTitle = @"Congrats!!!";
+        alertMessage = @"Great Job!";
+        [self incrementScore:self];
     }else {
-        alertMessage = @"Right Answer!!";
-    }*/
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"May or may not be right"
-                                                    message:@"Saved"
+        alertTitle = @"Not Quite";
+        alertMessage = @"Keep Trying!";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                    message:alertMessage
                                                    delegate:self
-                                          cancelButtonTitle:@"OK"
+                                          cancelButtonTitle:@"Next"
                                           otherButtonTitles:nil];
     [alert show];
 }
@@ -54,17 +63,21 @@
 {
     self.currentQuestion = [self.questionStore getQuestion]; 
     [self showQuestion:self];
-    [self incrementScore:self];
     
 }
 
 - (IBAction)showQuestion:(id)sender
 {
+
     
-    UIImage *nextPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto ofType:@"jpeg"]];
-    [[self leftPhoto] setImage:nextPhoto forState:UIControlStateNormal];
-    [[self rightPhoto] setImage:nextPhoto forState:UIControlStateNormal];
+    UIImage *leftPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto ofType:@"jpg"]];
+    UIImage *rightPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.rightPhoto ofType:@"jpg"]];
+    [[self leftPhoto] setImage:leftPhoto forState:UIControlStateNormal];
+    [[self leftPhotoLabel] setText:[NSString stringWithFormat:@"%d", [currentQuestion leftPhotoEmotion]]];
+    [[self rightPhoto] setImage:rightPhoto forState:UIControlStateNormal];
+    [[self rightPhotoLabel] setText:[NSString stringWithFormat:@"%d", [currentQuestion rightPhotoEmotion]]];
     [[self questionLabel] setText:self.currentQuestion.questionText];
+    NSLog(@"left photo %@, right photo %@", [currentQuestion leftPhoto], [currentQuestion rightPhoto]);
 }
 
 - (IBAction)incrementScore:(id)sender
@@ -72,6 +85,6 @@
     
     int newScore = [self score];
     [self setScore:(++newScore)];
-    [[self scoreLabel] setText:[NSString stringWithFormat:@"%d", newScore]];
+    [[self scoreLabel] setText:[NSString stringWithFormat:@"Score: %d", newScore]];
 }
 @end

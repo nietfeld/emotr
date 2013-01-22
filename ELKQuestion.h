@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#define LEFT 0
+#define RIGHT 1
 
 @interface ELKQuestion : NSObject
 
 
 @property (nonatomic, strong) NSString *questionText;
 @property (nonatomic, strong) NSString *leftPhoto;
+@property (nonatomic) int leftPhotoEmotion;
 @property (nonatomic, strong) NSString *rightPhoto;
-@property (nonatomic) BOOL answer;
+@property (nonatomic) int rightPhotoEmotion;
+@property (nonatomic) int emotionDifference;
+@property (nonatomic) int answer;
 @end
