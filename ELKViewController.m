@@ -70,8 +70,8 @@
 {
 
     
-    UIImage *leftPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto ofType:@"jpg"]];
-    UIImage *rightPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.rightPhoto ofType:@"jpg"]];
+    UIImage *leftPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto ofType:@".jpg"]];
+    UIImage *rightPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.rightPhoto ofType:@".jpg"]];
     [[self leftPhoto] setImage:leftPhoto forState:UIControlStateNormal];
     [[self leftPhotoLabel] setText:[NSString stringWithFormat:@"%d", [currentQuestion leftPhotoEmotion]]];
     [[self rightPhoto] setImage:rightPhoto forState:UIControlStateNormal];
