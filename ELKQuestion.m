@@ -9,6 +9,6 @@
 #import "ELKQuestion.h"
 
 @implementation ELKQuestion
-@synthesize questionText, leftPhoto, leftPhotoEmotion, rightPhoto, rightPhotoEmotion, answer, emotionDifference;
+@synthesize questionText, leftPhoto, leftPhotoEmotion, rightPhoto, rightPhotoEmotion, answer;
 
 @end
