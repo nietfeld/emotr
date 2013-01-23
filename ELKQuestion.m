@@ -9,6 +9,13 @@
 #import "ELKQuestion.h"
 
 @implementation ELKQuestion
-@synthesize questionText, leftPhoto, leftPhotoEmotion, rightPhoto, rightPhotoEmotion, answer;
+@synthesize leftPhoto, rightPhoto, questionText, answer;
+
+- (ELKQuestion *)init{
+    self = [super init];
+    leftPhoto = [[ELKPhoto alloc] init];
+    rightPhoto = [[ELKPhoto alloc] init];
+    return self;
+}
 
 @end

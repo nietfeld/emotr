@@ -25,7 +25,7 @@
     self.questionStore = [[ELKQuestionStore alloc] init];
     
     // Initializes with a new photo, stolen from dismissing the pop up. Factor this out? 
-    self.currentQuestion = [self.questionStore getQuestion];
+    self.currentQuestion = [[self questionStore] getQuestion];
     [self showQuestion:self];
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -70,12 +70,12 @@
 {
 
     
-    UIImage *leftPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto ofType:@".jpg"]];
-    UIImage *rightPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.rightPhoto ofType:@".jpg"]];
+    UIImage *leftPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto.path ofType:@".jpg"]];
+    UIImage *rightPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.rightPhoto.path ofType:@".jpg"]];
     [[self leftPhoto] setImage:leftPhoto forState:UIControlStateNormal];
-    [[self leftPhotoLabel] setText:[NSString stringWithFormat:@"%d", [currentQuestion leftPhotoEmotion]]];
+    [[self leftPhotoLabel] setText:[NSString stringWithFormat:@"%d", [[currentQuestion leftPhoto] intensity]]];
     [[self rightPhoto] setImage:rightPhoto forState:UIControlStateNormal];
-    [[self rightPhotoLabel] setText:[NSString stringWithFormat:@"%d", [currentQuestion rightPhotoEmotion]]];
+    [[self rightPhotoLabel] setText:[NSString stringWithFormat:@"%d", [[currentQuestion rightPhoto] intensity]]];
     [[self questionLabel] setText:self.currentQuestion.questionText];
     NSLog(@"left photo %@, right photo %@", [currentQuestion leftPhoto], [currentQuestion rightPhoto]);
 }

@@ -25,7 +25,7 @@
 - (void)drawRect:(CGRect)rect
 {    
     
-    CGRect myRect = CGRectMake(20,20,100,100);
+    CGRect myRect = CGRectMake(0,400,600,600);
     
     CGContextRef c = UIGraphicsGetCurrentContext();
     CGContextSetRGBFillColor(c, 1.0, 1, 1, 1.0);
