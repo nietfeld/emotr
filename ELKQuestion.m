@@ -9,7 +9,7 @@
 #import "ELKQuestion.h"
 
 @implementation ELKQuestion
-@synthesize leftPhoto, rightPhoto, questionText, answer;
+@synthesize leftPhoto, rightPhoto, questionText, correctAnswer, submittedAnswer;
 
 - (ELKQuestion *)init{
     self = [super init];

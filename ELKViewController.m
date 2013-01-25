@@ -10,25 +10,25 @@
 #import "ELKQuestion.h"
 
 @interface ELKViewController ()
-
 @end
 
 @implementation ELKViewController
 @synthesize currentQuestion, questionStore, score;
 
 
+
 - (void)viewDidLoad
 {
-
+    
     [super viewDidLoad];
     [self setScore:(0)];
     self.questionStore = [[ELKQuestionStore alloc] init];
-    
-    // Initializes with a new photo, stolen from dismissing the pop up. Factor this out? 
     self.currentQuestion = [[self questionStore] getQuestion];
     [self showQuestion:self];
+	
+    self.backgroundLabel.hidden = self.coverLeft.hidden = self.coverRight.hidden = YES;
     
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,40 +38,51 @@
 }
 
 
-- (IBAction)makePopUp:(id)sender
+
+- (IBAction)showAnswer:(id)sender
 {
-    NSString *alertTitle;
-    NSString *alertMessage;
-    if([sender tag] == [[self currentQuestion] answer]){
-        alertTitle = @"Congrats!!!";
-        alertMessage = @"Great Job!";
+   
+    
+    if([sender tag] == [[self currentQuestion] correctAnswer]){
+        NSLog(@"Got it right!");
+        [[self currentQuestion] setSubmittedAnswer:true];
+        [self.questionStore handleResponse:currentQuestion];
         [self incrementScore:self];
-    }else {
-        alertTitle = @"Not Quite";
-        alertMessage = @"Keep Trying!";
+    } else {
+        self.backgroundLabel.hidden = NO;
+        if([sender tag] == 0){
+            self.coverLeft.hidden = NO;
+            [self.coverLeft performSelector:@selector(setHidden:)
+                                 withObject:[NSNumber numberWithBool:YES]
+                                 afterDelay:1.0];
+        }else{
+            self.coverRight.hidden = NO;
+            [self.coverRight performSelector:@selector(setHidden:)
+                                 withObject:[NSNumber numberWithBool:YES]
+                                 afterDelay:1.0];
+        }
+        [self.backgroundLabel performSelector:@selector(setHidden:)
+                              withObject:[NSNumber numberWithBool:YES]
+                              afterDelay:1.0];
+        [[self currentQuestion] setSubmittedAnswer:false];
+        [self.questionStore handleResponse:currentQuestion];
+
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                    message:alertMessage
-                                                   delegate:self
-                                          cancelButtonTitle:@"Next"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
- 
-- (void)alertView:(UIAlertView *)alertV didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    self.currentQuestion = [self.questionStore getQuestion]; 
+    // Function a bunch of stuff out into what to do while waiting and what to trigger after 
+    
+    self.currentQuestion = [self.questionStore getQuestion];
     [self showQuestion:self];
     
 }
 
+
 - (IBAction)showQuestion:(id)sender
 {
-
-    
+    // DISPLAY THE PHOTOS! 
     UIImage *leftPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.leftPhoto.path ofType:@".jpg"]];
     UIImage *rightPhoto = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.currentQuestion.rightPhoto.path ofType:@".jpg"]];
+
     [[self leftPhoto] setImage:leftPhoto forState:UIControlStateNormal];
     [[self leftPhotoLabel] setText:[NSString stringWithFormat:@"%d", [[currentQuestion leftPhoto] intensity]]];
     [[self rightPhoto] setImage:rightPhoto forState:UIControlStateNormal];
@@ -82,7 +93,7 @@
 
 - (IBAction)incrementScore:(id)sender
 {
-    
+
     int newScore = [self score];
     [self setScore:(++newScore)];
     [[self scoreLabel] setText:[NSString stringWithFormat:@"Score: %d", newScore]];

@@ -10,6 +10,9 @@
 #import "ELKQuestionStore.h"
 
 @interface ELKViewController : UIViewController
+@property (strong, nonatomic) ELKQuestion *currentQuestion;
+@property (nonatomic, strong) ELKQuestionStore *questionStore;
+
 @property (weak, nonatomic) IBOutlet UIButton *leftPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *leftPhotoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *rightPhoto;
@@ -17,16 +20,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *coverLeft;
+@property (weak, nonatomic) IBOutlet UILabel *coverRight;
+@property (weak, nonatomic) IBOutlet UILabel *backgroundLabel;
 
+@property (nonatomic) NSTimer* timer;
+@property (nonatomic) int score;
 
-//- (IBAction)choseLeftImage:(id)sender;
-//- (IBAction)choseRightImage:(id)sender;
-- (IBAction)makePopUp:(id)sender;
+- (IBAction)showAnswer:(id)sender;
 - (IBAction)showQuestion:(id)sender;
 - (IBAction)incrementScore:(id)sender;
 
-// should this be weak? 
-@property (strong, nonatomic) ELKQuestion *currentQuestion;
-@property (nonatomic) int score;
-@property (nonatomic, strong) ELKQuestionStore *questionStore;
 @end

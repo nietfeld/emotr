@@ -17,5 +17,6 @@
 @property (nonatomic, strong) ELKPhoto *leftPhoto;
 @property (nonatomic, strong) ELKPhoto *rightPhoto;
 @property (nonatomic, strong) NSString *questionText;
-@property (nonatomic) int answer;
+@property (nonatomic) bool correctAnswer;
+@property (nonatomic) bool submittedAnswer;
 @end
