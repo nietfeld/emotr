@@ -10,4 +10,6 @@
 
 @interface ELKPerformance : NSObject
 @property (nonatomic) int performanceCounter;
+
+-(void)incrementPerformance;
 @end

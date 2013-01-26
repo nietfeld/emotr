@@ -8,12 +8,13 @@
 
 #import "ELKViewController.h"
 #import "ELKQuestion.h"
+#import "ELKPerformanceViewController.h"
 
 @interface ELKViewController ()
 @end
 
 @implementation ELKViewController
-@synthesize currentQuestion, questionStore, score;
+@synthesize currentQuestion, questionStore, score, performanceViewController;
 
 
 
@@ -21,6 +22,7 @@
 {
     
     [super viewDidLoad];
+    [UIApplication sharedApplication].statusBarHidden = YES;
     [self setScore:(0)];
     self.questionStore = [[ELKQuestionStore alloc] init];
     self.currentQuestion = [[self questionStore] getQuestion];
@@ -98,4 +100,20 @@
     [self setScore:(++newScore)];
     [[self scoreLabel] setText:[NSString stringWithFormat:@"Score: %d", newScore]];
 }
+
+- (IBAction)switchToPerformanceView:(id)sender
+{
+    if (performanceViewController == nil)
+    {
+        ELKPerformanceViewController *newPerf = [[ELKPerformanceViewController alloc] initWithNibName:@"ELKPerformanceViewController"
+                                                                                                                 bundle:[NSBundle mainBundle]];
+        self.performanceViewController = newPerf;
+        NSLog(@"Calling the performance view thing!!! ");
+    }
+    
+    // How you reference your navigation controller will
+    // probably be a little different
+    [self presentViewController:performanceViewController animated: TRUE completion: nil];
+}
+
 @end

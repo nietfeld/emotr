@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ELKQuestionStore.h"
+#import "ELKPerformanceViewController.h"
 
-@interface ELKViewController : UIViewController
+@interface ELKViewController : UIViewController{
+    ELKPerformanceViewController *performanceViewController;
+}
+@property (nonatomic, retain) ELKPerformanceViewController *performanceViewController;
+@property (weak, nonatomic) IBOutlet UIButton *switchViewButton;
+
+
 @property (strong, nonatomic) ELKQuestion *currentQuestion;
 @property (nonatomic, strong) ELKQuestionStore *questionStore;
 
@@ -30,5 +37,6 @@
 - (IBAction)showAnswer:(id)sender;
 - (IBAction)showQuestion:(id)sender;
 - (IBAction)incrementScore:(id)sender;
+- (IBAction)switchToPerformanceView:(id)sender;
 
 @end

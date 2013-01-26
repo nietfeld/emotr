@@ -11,7 +11,7 @@
 @implementation ELKPerformance
 @synthesize performanceCounter;
 
--(void)updatePerformance:(BOOL)lastQuestion
+-(void)incrementPerformance
 {
     [self setPerformanceCounter:([self performanceCounter]+1)];
 }

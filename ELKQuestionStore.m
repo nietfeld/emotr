@@ -10,15 +10,16 @@
 #import <sqlite3.h>
 
 @implementation ELKQuestionStore
-@synthesize prior, threshold, step, history, lastQuestionCorrect;
+@synthesize prior, threshold, step, performanceDictionary, lastQuestionCorrect;
 
 - (void)handleResponse:(ELKQuestion*)answeredQuestion {
     
     // FIX THIS 
     if(lastQuestionCorrect && [answeredQuestion submittedAnswer]){
-        [self setLastQuestionCorrect:false];
-        //while (threshold > 0)
+        if ([self threshold] > 0){
+            [self setLastQuestionCorrect:false];
             [self setThreshold:([self threshold] - [self step])];
+        }
         NSLog(@"Last question was right!");
     }else if(lastQuestionCorrect && ![answeredQuestion submittedAnswer]){
         lastQuestionCorrect = false;
@@ -26,12 +27,26 @@
     }else if(!lastQuestionCorrect && [answeredQuestion submittedAnswer]){
         lastQuestionCorrect = true;
         NSLog(@"Last question was right!");
-    }else if(! lastQuestionCorrect && [answeredQuestion submittedAnswer]){
-        //while(threshold < 50)
-        [self setThreshold:([self threshold] + [self step])];
+    }else if(! lastQuestionCorrect && ![answeredQuestion submittedAnswer]){
+        if ([self threshold] <= (51 - [self step])) {
+            [self setThreshold:([self threshold] + [self step])];
+        }
         NSLog(@"Last two questions were wrong!");
     }
-    // add recording to a dictionary here later
+    
+    int emotionsKey = [[answeredQuestion leftPhoto] emotions_people];
+    NSLog(@"%d", emotionsKey);
+    
+   // NSNumber *primaryKey = [NSNumber numberWithInt:emotionsKey];
+   // NSLog(@"%@", primaryKey);
+    ELKPerformance *p_lookup = [performanceDictionary objectForKey:[NSNumber numberWithInt:emotionsKey]]; 
+    if(p_lookup == nil){
+        NSLog(@"Nothing in dictionary with key %d", emotionsKey);
+        p_lookup = [[ELKPerformance alloc] init];
+        [performanceDictionary setObject:p_lookup forKey:([NSNumber numberWithInt:emotionsKey])];
+    }
+    [p_lookup incrementPerformance];
+    NSLog(@"now the counter is: %d", [p_lookup performanceCounter]);
     
 }
 
@@ -54,13 +69,17 @@
     
     sqlite3_step(results);
     const unsigned char *picture_name = sqlite3_column_text(results, 0);
+    int emotions_people = sqlite3_column_int(results, 1);
     int intensity = sqlite3_column_int(results, 2);
     [[newQuestion leftPhoto] setPath:[NSString stringWithFormat:@"%s", picture_name]];
+    [[newQuestion leftPhoto] setEmotions_people:emotions_people];
     [[newQuestion leftPhoto] setIntensity:intensity];
     
     picture_name = sqlite3_column_text(results, 3);
+    emotions_people = sqlite3_column_int(results, 4);
     intensity = sqlite3_column_int(results, 5);
     [[newQuestion rightPhoto] setPath:[NSString stringWithFormat:@"%s", picture_name]];
+    [[newQuestion leftPhoto] setEmotions_people:emotions_people];
     [[newQuestion rightPhoto] setIntensity:intensity];
     
     
@@ -82,7 +101,7 @@
         NSLog(@"Error Opening Database");
     
     // HOW TO INITIALIZE THIS? DO I HAVE TO???
-    [self setHistory:[[NSMutableDictionary alloc] initWithCapacity:1000]];
+    [self setPerformanceDictionary:[[NSMutableDictionary alloc] initWithCapacity:50]];
     [self setStep:10];
     [self setThreshold:20];
     [self setPrior:20];

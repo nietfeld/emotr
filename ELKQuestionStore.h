@@ -18,7 +18,7 @@ sqlite3 *database;
 @property (nonatomic) int threshold;
 @property (nonatomic) int step;
 @property (nonatomic) bool lastQuestionCorrect;
-@property (nonatomic) NSMutableDictionary *history;
+@property (nonatomic) NSMutableDictionary *performanceDictionary;
 
 - (ELKQuestion *)getQuestion;
 - (void)handleResponse:(ELKQuestion*)question;
