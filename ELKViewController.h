@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "ELKQuestionStore.h"
 #import "ELKPerformanceViewController.h"
 
@@ -15,21 +16,19 @@
 }
 @property (nonatomic, retain) ELKPerformanceViewController *performanceViewController;
 @property (weak, nonatomic) IBOutlet UIButton *switchViewButton;
-
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @property (strong, nonatomic) ELKQuestion *currentQuestion;
 @property (nonatomic, strong) ELKQuestionStore *questionStore;
 
-@property (weak, nonatomic) IBOutlet UIButton *leftPhoto;
-@property (weak, nonatomic) IBOutlet UILabel *leftPhotoLabel;
-@property (weak, nonatomic) IBOutlet UIButton *rightPhoto;
-@property (weak, nonatomic) IBOutlet UILabel *rightPhotoLabel;
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIImageView *leftPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
+@property (weak, nonatomic) IBOutlet UIImageView *rightPhoto;
 
-@property (weak, nonatomic) IBOutlet UILabel *coverLeft;
-@property (weak, nonatomic) IBOutlet UILabel *coverRight;
-@property (weak, nonatomic) IBOutlet UILabel *backgroundLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *wrongPic;
+
 
 @property (nonatomic) NSTimer* timer;
 @property (nonatomic) int score;

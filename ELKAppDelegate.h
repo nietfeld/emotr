@@ -11,7 +11,9 @@
 @class ELKViewController;
 
 @interface ELKAppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    
+}
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ELKViewController *viewController;

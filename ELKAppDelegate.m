@@ -19,6 +19,8 @@
     self.viewController = [[ELKViewController alloc] initWithNibName:@"ELKViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
+    [[UIToolbar appearance] setTintColor:[UIColor lightGrayColor]];
     return YES;
 }
 
